@@ -44,6 +44,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: server
-        path: |
-          server
-          !server/node_modules/*
+        path: server/*.js[on]?
