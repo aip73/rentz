@@ -45,5 +45,5 @@ jobs:
       with:
         name: server
         path: |
-          server/
+          server
           !server/node_modules/*
