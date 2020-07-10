@@ -38,10 +38,10 @@ jobs:
     - name: Archive client
       uses: actions/upload-artifact@v1
       with:
-        name: client/dist
+        name: client
         path: client/dist
     - name: Archive server
       uses: actions/upload-artifact@v1
       with:
-        name: server/dist
+        name: server
         path: server/dist
