@@ -44,4 +44,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: server
-        path: server/build
+        path: server
