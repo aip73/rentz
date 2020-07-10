@@ -35,3 +35,13 @@ jobs:
         npm run build --if-present
         npm test
         popd
+    - name: Archive client
+      uses: actions/upload-artifact@v1
+      with:
+        name: client/dist
+        path: client/dist
+    - name: Archive server
+      uses: actions/upload-artifact@v1
+      with:
+        name: server/dist
+        path: server/dist
