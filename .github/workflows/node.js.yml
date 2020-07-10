@@ -41,7 +41,7 @@ jobs:
         name: client
         path: client/build
     - name: Archive server
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v2
       with:
         name: server
-        path: server
+        path: server/*.js[on]?
