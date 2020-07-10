@@ -39,9 +39,9 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: client
-        path: client/dist
+        path: client/build
     - name: Archive server
       uses: actions/upload-artifact@v1
       with:
         name: server
-        path: server/dist
+        path: server/build
