@@ -47,7 +47,11 @@ jobs:
         path: |
           server/*.js
           server/*.json
-    
+  deploy:
+    name: deploy artifacts
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
     - name: deploy server
       uses: miked49er/rsync-deployments@v1.0
       with:
