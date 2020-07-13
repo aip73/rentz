@@ -53,21 +53,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: deploy server
-      uses: miked49er/rsync-deployments@v1.0
+      uses: appleboy/scp-action@master
       with:
-        switches: -avzr --delete
-        path: server/
-        remote_path: /var/tmp/server/
-        remote_host: ${{ secrets.SSH_AIP_HOST }}
-        remote_user: ${{ secrets.SSH_AIP_USER }}
-        remote_key: ${{ secrets.SSH_AIP_KEY }}
+        host: ${{ secrets.SSH_AIP_HOST }}
+        username: ${{ secrets.SSH_AIP_USER }}
+        key: ${{ secrets.SSH_AIP_KEY }}
+        source: server.zip
+        target: /var/tmp/server/
     - name: deploy client
-      uses: miked49er/rsync-deployments@v1.0
+      uses: appleboy/scp-action@master
       with:
-        switches: -avzr --delete
-        path: client/build
-        remote_path: /var/tmp/client/
-        remote_host: ${{ secrets.SSH_AIP_HOST }}
-        remote_user: ${{ secrets.SSH_AIP_USER }}
-        remote_key: ${{ secrets.SSH_AIP_KEY }}
-    
+        host: ${{ secrets.SSH_AIP_HOST }}
+        username: ${{ secrets.SSH_AIP_USER }}
+        key: ${{ secrets.SSH_AIP_KEY }}
+        source: client.zip
+        target: /var/tmp/server/
