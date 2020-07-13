@@ -78,7 +78,7 @@ jobs:
         privateKey : ${{ secrets.SSH_AIP_KEY }}
         passphrase :  ${{ secrets.SSH_AIP_PHRASE }}
         local: "server"
-        remote: /var/tmp/github/
+        remote: /var/tmp/github/server/
     - name: deploy client
       uses: garygrossgarten/github-action-scp@release
       with:
@@ -87,4 +87,4 @@ jobs:
         privateKey : ${{ secrets.SSH_AIP_KEY }}
         passphrase :  ${{ secrets.SSH_AIP_PHRASE }}
         local: "client"
-        remote: /var/tmp/github/
+        remote: /var/tmp/github/client/
