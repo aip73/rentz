@@ -100,4 +100,5 @@ jobs:
            rsync -avz --delete --delete-after /var/tmp/github/server/ ${{ secrets.AIP_SSH_SERVER_PATH }}
            cd ${{ secrets.AIP_SSH_SERVER_PATH }}
            npm install
-           cd && ./start-rents-server.sh
+           cd
+           ./start-rents-server.sh
