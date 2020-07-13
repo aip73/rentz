@@ -92,14 +92,14 @@ jobs:
     needs: copyToServer
     runs-on: ubuntu-latest
     steps:
-     - name: deploy client
-       uses: appleboy/ssh-action@master
+     - name: deploy client and server
+       uses: garygrossgarten/github-action-ssh@release
        with:
          host: ${{ secrets.SSH_AIP_HOST }}
          username: ${{ secrets.SSH_AIP_USER }}
-         key: ${{ secrets.SSH_AIP_KEY }}
+         privateKey: ${{ secrets.SSH_AIP_KEY }}
          passphrase :  ${{ secrets.SSH_AIP_PHRASE }}
-         script: |
+         command: |
            rsync -avz --delete /var/tmp/github/client/ ${{ secrets.AIP_SSH_CLIENT_PATH }}
            kill $(netstat -lntp | grep 37303 | awk '{print $NF}' | cut -d/ -f1 )
            rsync -avz --delete /var/tmp/github/server/ ${{ secrets.AIP_SSH_SERVER_PATH }}
