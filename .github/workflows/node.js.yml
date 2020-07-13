@@ -42,6 +42,7 @@ jobs:
         name: server
         path: |
           server/
+
   copyToServer:
     name: deploy artifacts
     needs: build
@@ -83,6 +84,7 @@ jobs:
         passphrase :  ${{ secrets.SSH_AIP_PHRASE }}
         local: "client"
         remote: /var/tmp/github/client/
+  
   deploy:
     needs: copyToServer
     runs-on: ubuntu-latest
