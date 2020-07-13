@@ -105,4 +105,3 @@ jobs:
            rsync -avz --delete /var/tmp/github/server/ ${{ secrets.AIP_SSH_SERVER_PATH }}
            cd ${{ secrets.AIP_SSH_SERVER_PATH }}
            nohup nodejs server.js &
-      
