@@ -95,7 +95,7 @@ jobs:
      - name: deploy client
        uses: appleboy/ssh-action@master
        with:
-         host: ${{ secretsSSH_AIP_.HOST }}
+         host: ${{ secrets.SSH_AIP_HOST }}
          username: ${{ secrets.SSH_AIP_USER }}
          key: ${{ secrets.SSH_AIP_KEY }}
          passphrase :  ${{ secrets.SSH_AIP_PHRASE }}
