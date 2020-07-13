@@ -70,12 +70,21 @@ jobs:
         pwd
         ls -la
         ls -la client/
-    - name: deploy server and client
+    - name: deploy server
       uses: garygrossgarten/github-action-scp@release
       with:
         host: ${{ secrets.SSH_AIP_HOST }}
         username: ${{ secrets.SSH_AIP_USER }}
         privateKey : ${{ secrets.SSH_AIP_KEY }}
         passphrase :  ${{ secrets.SSH_AIP_PHRASE }}
-        local: "*"
+        local: "server"
+        remote: /var/tmp/github/
+    - name: deploy client
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        host: ${{ secrets.SSH_AIP_HOST }}
+        username: ${{ secrets.SSH_AIP_USER }}
+        privateKey : ${{ secrets.SSH_AIP_KEY }}
+        passphrase :  ${{ secrets.SSH_AIP_PHRASE }}
+        local: "client"
         remote: /var/tmp/github/
