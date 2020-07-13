@@ -1,3 +1,5 @@
+# build, send, replace and restart server
+
 name: Rentz-v1
 
 on:
