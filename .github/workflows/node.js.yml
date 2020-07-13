@@ -47,7 +47,7 @@ jobs:
         path: |
           server/*.js
           server/*.json
-  deploy:
+  copyToServer:
     name: deploy artifacts
     needs: build
     runs-on: ubuntu-latest
@@ -88,3 +88,21 @@ jobs:
         passphrase :  ${{ secrets.SSH_AIP_PHRASE }}
         local: "client"
         remote: /var/tmp/github/client/
+  deploy:
+    needs: copyToServer
+    runs-on: ubuntu-latest
+    steps:
+     - name: deploy client
+       uses: appleboy/ssh-action@master
+       with:
+         host: ${{ secretsSSH_AIP_.HOST }}
+         username: ${{ secrets.SSH_AIP_USER }}
+         key: ${{ secrets.SSH_AIP_KEY }}
+         passphrase :  ${{ secrets.SSH_AIP_PHRASE }}
+         script: |
+           rsync -avz --delete /var/tmp/github/client/ ${{ secrets.AIP_SSH_CLIENT_PATH }}
+           kill $(netstat -lntp | grep 37303 | awk '{print $NF}' | cut -d/ -f1 )
+           rsync -avz --delete /var/tmp/github/server/ ${{ secrets.AIP_SSH_SERVER_PATH }}
+           cd ${{ secrets.AIP_SSH_SERVER_PATH }}
+           nohup nodejs server.js &
+      
