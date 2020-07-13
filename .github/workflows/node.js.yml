@@ -58,5 +58,6 @@ jobs:
         host: ${{ secrets.SSH_AIP_HOST }}
         username: ${{ secrets.SSH_AIP_USER }}
         privateKey : ${{ secrets.SSH_AIP_KEY }}
+        passphrase :  ${{ secrets.SSH_AIP_PHRASE }}
         local: "server.zip"
         remote: /var/tmp/github/
