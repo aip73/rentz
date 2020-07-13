@@ -52,6 +52,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+    - name: Download artifacts
+      uses: actions/download-artifact@v1
+      with:
+        name: server
     - name: deploy server
       uses: garygrossgarten/github-action-scp@release
       with:
