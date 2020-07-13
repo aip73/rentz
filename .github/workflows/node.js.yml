@@ -56,6 +56,11 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: server
+    - shell: bash
+      run: |
+        pwd
+        ls -la
+        ls -la server/
     - name: deploy server
       uses: garygrossgarten/github-action-scp@release
       with:
