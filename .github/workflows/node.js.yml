@@ -52,7 +52,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    - name: Download artifacts
+    - name: Download server
       uses: actions/download-artifact@v1
       with:
         name: server
@@ -61,12 +61,21 @@ jobs:
         pwd
         ls -la
         ls -la server/
-    - name: deploy server
+    - name: Download client
+      uses: actions/download-artifact@v1
+      with:
+        name: client
+    - shell: bash
+      run: |
+        pwd
+        ls -la
+        ls -la client/
+    - name: deploy server and client
       uses: garygrossgarten/github-action-scp@release
       with:
         host: ${{ secrets.SSH_AIP_HOST }}
         username: ${{ secrets.SSH_AIP_USER }}
         privateKey : ${{ secrets.SSH_AIP_KEY }}
         passphrase :  ${{ secrets.SSH_AIP_PHRASE }}
-        local: "server.zip"
+        local: "server/* client/*"
         remote: /var/tmp/github/
