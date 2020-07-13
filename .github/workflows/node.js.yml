@@ -97,8 +97,7 @@ jobs:
          command: |
            rsync -avz --delete /var/tmp/github/client/ ${{ secrets.AIP_SSH_CLIENT_PATH }}
            kill $(netstat -lntp | grep 37303 | awk '{print $NF}' | cut -d/ -f1 )
-           rsync -avz --delete /var/tmp/github/server/ ${{ secrets.AIP_SSH_SERVER_PATH }}
+           rsync -avz --delete --delete-after /var/tmp/github/server/ ${{ secrets.AIP_SSH_SERVER_PATH }}
            cd ${{ secrets.AIP_SSH_SERVER_PATH }}
            npm install
            nohup nodejs server.js &
-           ls -l
