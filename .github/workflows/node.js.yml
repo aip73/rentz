@@ -101,4 +101,4 @@ jobs:
            cd ${{ secrets.AIP_SSH_SERVER_PATH }}
            npm install
            nohup nodejs server.js &
-           pwd
+           ls -l
